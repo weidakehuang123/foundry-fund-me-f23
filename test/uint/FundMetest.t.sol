@@ -78,20 +78,14 @@ contract FundMeTest is Test {
         uint256 endingOwnerBalance = fundMe.getOwner().balance;
         uint256 endingFundMeBalance = address(fundMe).balance;
         assert(endingFundMeBalance == 0);
-        assert(
-            endingOwnerBalance == startingOwnerBalance + startingFundMeBalance
-        );
+        assert(endingOwnerBalance == startingOwnerBalance + startingFundMeBalance);
     }
 
     function testWithdrawFromMultipleFunders() public funded {
         //Arrange
         uint160 numberOfFunders = 10;
         uint160 startingFunderIndex = 1;
-        for (
-            uint160 i = startingFunderIndex;
-            i < numberOfFunders + startingFunderIndex;
-            i++
-        ) {
+        for (uint160 i = startingFunderIndex; i < numberOfFunders + startingFunderIndex; i++) {
             //vm.prank is used to change the msg.sender of the next call
             //vm.deal is used to give an address some ETH
             hoax(address(i), SEND_VALUE);
@@ -107,9 +101,7 @@ contract FundMeTest is Test {
         uint256 endingOwnerBalance = fundMe.getOwner().balance;
         uint256 endingFundMeBalance = address(fundMe).balance;
         assert(endingFundMeBalance == 0);
-        assert(
-            endingOwnerBalance == startingOwnerBalance + startingFundMeBalance
-        );
+        assert(endingOwnerBalance == startingOwnerBalance + startingFundMeBalance);
     }
 
     function testWithDrawWithASingleFunderCheaper() public funded {
@@ -123,8 +115,6 @@ contract FundMeTest is Test {
         uint256 endingOwnerBalance = fundMe.getOwner().balance;
         uint256 endingFundMeBalance = address(fundMe).balance;
         assert(endingFundMeBalance == 0);
-        assert(
-            endingOwnerBalance == startingOwnerBalance + startingFundMeBalance
-        );
+        assert(endingOwnerBalance == startingOwnerBalance + startingFundMeBalance);
     }
 }
